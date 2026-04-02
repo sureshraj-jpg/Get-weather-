@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sureshraj Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('bg-white');
+      document.body.classList.toggle('text-black');
+    }
+
+    async function getWeather() {
+      const city = document.getElementById('city').value;
+      const apiKey = 'YOUR_API_KEY';
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+      const data = await res.json();
+      document.getElementById('weatherResult').innerText = `${data.name}: ${data.main.temp}°C`;
+    }
+  </script>
+</head>
+<body class="bg-gray-900 text-white transition duration-500">
+
+  <nav class="flex justify-between p-5 bg-gray-800">
+    <h1 class="text-xl font-bold">Sureshraj</h1>
+    <div class="space-x-4">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button onclick="toggleDarkMode()">🌙</button>
+    </div>
+  </nav>
+
+  <section class="text-center py-20">
+    <h2 class="text-4xl font-bold">Hi, I'm Sureshraj 👋</h2>
+    <p class="mt-4 text-gray-300">Frontend Developer | HTML | CSS | JavaScript</p>
+  </section>
+
+  <section id="about" class="p-10">
+    <h2 class="text-2xl font-bold mb-4">About Me</h2>
+    <p>I am an aspiring frontend developer passionate about building responsive and user-friendly web applications.</p>
+  </section>
+
+  <section id="projects" class="p-10">
+    <h2 class="text-2xl font-bold mb-6">Projects</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="bg-gray-800 p-5 rounded-xl hover:scale-105 transition">
+        <h3 class="font-bold">Portfolio Website</h3>
+        <p>Responsive personal portfolio</p>
+        <a href="https://github.com/your-username" class="text-blue-400">View Code</a>
+      </div>
+
+      <div class="bg-gray-800 p-5 rounded-xl hover:scale-105 transition">
+        <h3 class="font-bold">To-Do App</h3>
+        <p>Task management using JavaScript</p>
+        <a href="https://github.com/your-username" class="text-blue-400">View Code</a>
+      </div>
+
+      <div class="bg-gray-800 p-5 rounded-xl hover:scale-105 transition">
+        <h3 class="font-bold">Weather App</h3>
+        <p>Live weather using API</p>
+        <input id="city" placeholder="Enter city" class="text-black p-1 mt-2" />
+        <button onclick="getWeather()" class="block mt-2 bg-blue-500 px-3 py-1 rounded">Get Weather</button>
+        <p id="weatherResult" class="mt-2"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="p-10 text-center">
+    <h2 class="text-2xl font-bold mb-4">Contact</h2>
+    <p>Email: sureshsparks552006@gmail.com</p>
+    <p>GitHub: https://github.com/your-username</p>
+  </section>
+
+  <footer class="text-center p-5 bg-gray-800">
+    <p>© 2026 Sureshraj</p>
+  </footer>
+
+</body>
+</html>
